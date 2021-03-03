@@ -1,22 +1,21 @@
-var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
-function validate(){
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-if ( username == "Admin" && password == "Adman123!@#"){
-alert ("Login successfully");
-window.location = "success.html"; // Redirecting to other page.
-return false;
-}
-else{
-attempt --;// Decrementing by one.
-alert("You have left "+attempt+" attempt;");
-// Disabling fields after 3 attempts.
-if( attempt == 0){
-document.getElementById("username").disabled = true;
-document.getElementById("password").disabled = true;
-document.getElementById("submit").disabled = true;
-return false;
-}
-}
-}
+const loginForm = document.getElementById("login-form");
+const loginButton = document.getElementById("login-form-submit");
+const loginErrorMsg = document.getElementById("login-error-msg");
+
+// When the login button is clicked, the following code is executed
+loginButton.addEventListener("click", (e) => {
+    // Prevent the default submission of the form
+    e.preventDefault();
+    // Get the values input by the user in the form fields
+    const username = loginForm.username.value;
+    const password = loginForm.password.value;
+
+    if (username === "user" && password === "web_dev") {
+        // If the credentials are valid, show an alert box and reload the page
+        alert("You have successfully logged in.");
+        location.reload();
+    } else {
+        // Otherwise, make the login error message show (change its oppacity)
+        loginErrorMsg.style.opacity = 1;
+    }
+})
